@@ -1,5 +1,6 @@
 //variable for the api query
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=vokt7stTYaqiAx2gkIYLxGMTgFfRtAT3&limit=10";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q="+request+"&api_key=vokt7stTYaqiAx2gkIYLxGMTgFfRtAT3&limit=10";
+var request = $("#buttons").val();
 
 //array to provide the user with recommended GIFS...
 var makesModels = ["BMW", "Mercedes", "Ford", "Chevy", "Supra", "m3"];
@@ -16,15 +17,25 @@ function buttons() {
     }
 }
 
-
 $(function (){
     //ajax call out to the api...
     $.ajax ({
         url: queryURL,
         method: "GET"
     }).then (function(response){
-        console.log(response);
-    });
+        var results = response.data;
+        for (var i = 0; i < results.length; i++){
+            //creating a div to hold the gif in the right area of HTML
+            var gifDiv = $("#gifHolder").append("<div>");
+            //storing the gif url
+            var gifURL = response.data.url;
+            //element to show gif
+            var showGif = $("<img>").attr("src", gifURL);
+            //display gif
+            gifDiv.append(showGif);
+            };
+        });
+        
     
     //function to take user input and add it as a button...
     $("#add-makesModels").on("click", function(event){
@@ -38,4 +49,5 @@ $(function (){
     })
     //call buttons function to show list of gifs to start with...
     buttons();
-})
+
+});
