@@ -12,16 +12,22 @@ $(function displayGif() {
     $.ajax ({
         url: queryURL,
         method: "GET"
-    }).then (function(response){
-            //creating a div to hold the gif in the right area of HTML
-            var gifDiv = $("<div class='gif-div'>");
-            //storing the gif url
-            var gifURL = response.data.url;
-            //element to show gif
-            var showGif = $("<img>").attr("src", gifURL);
-            //display gif
-            gifDiv.append(showGif);
-            console.log(gifURL)
+    }).then (function (response){
+        //variable for reading through the api...
+        var results = response.data;
+        //loop to go through the data...
+        for (var i = 0; i < results.length; i++){
+        //creating a div to hold the gif in the right area of HTML
+        var gifDiv = $("<div class='gif-div'>");
+        //storing the gif url
+        var gifURL = response.data[i];
+        //element to show gif
+        var showGif = $("<img>").attr("src", gifURL.images.original.url);
+        //display gif
+        gifDiv.prepend(showGif);
+
+        console.log(gifURL);
+        }
     });
     
     //function to show recommended GIF buttons
@@ -62,4 +68,5 @@ $(function displayGif() {
     //call buttons function to show list of gifs buttons...
    createButton();
     
+
 });
