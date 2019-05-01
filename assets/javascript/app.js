@@ -1,14 +1,19 @@
 $(document).ready(function() {
     //array to provide the user with recommended GIFS...
     var makesModels = ["BMW", "Mercedes", "Ford", "Chevy", "Supra", "m3"];
+    
+    //call buttons function to show list of gifs buttons...
+    createButton();
 
+    //Add click event listener to all alements with "gif-btn"...
+    $(document).on("click", ".gif-btn", displayGif);
+    
     //function to show recommended GIF buttons
     function createButton() {
         //delete listed GIFS prior to adding new buttons
         $("#buttons").empty();
         
         //loop through the array of makes and models...
-        
         for (var i = 0; i < makesModels.length; i++) {
             //create new button
             var button = $("<button>");
@@ -20,9 +25,9 @@ $(document).ready(function() {
             button.text(makesModels[i]);
             //add button to button view
             $("#buttons").append(button);
-        }
-    }
-
+        };    
+    };    
+    
     function displayGif() {
         //variable for the api query
         var request = $(this).attr("data-name");
@@ -39,15 +44,18 @@ $(document).ready(function() {
             for (var i = 0; i < results.length; i++){
             //creating a div to hold the gif in the right area of HTML
             var gifDiv = $("<div>");
+            //paragraph tag for rating
+            var pRating = $("<p>").text("Rating: " + results[i].rating);
             //element to show gif
             var showGif = $("<img>");
             showGif.attr("src", results[i].images.fixed_height.url);
-            
-            //display gif
+             //display gif and rating
+            gifDiv.append(pRating);
             gifDiv.append(showGif);
 
             $("#gifHolder").prepend(showGif);
             }
+            console.log(pRating);
         });
     
         //function handles events when button is clicked...
@@ -60,11 +68,8 @@ $(document).ready(function() {
             //call the buttons function to run through the array and creat a button.
             createButton();
         });   
+
     };
 
-    //call buttons function to show list of gifs buttons...
-    createButton();
-    //Add click event listener to all alements with "gif-btn"...
-    $(document).on("click", ".gif-btn", displayGif);
-    
 });
+    

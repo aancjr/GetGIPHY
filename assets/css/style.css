@@ -1,24 +1,23 @@
 .container {
     width: 960px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#header {
-    margin: auto;
-}
+/* #header {
+} */
 
 #buttons {
-    margin: auto;
     padding: 5px;
 }
 
-#form {
-    margin: auto;
-} 
+/* #form {
+}  */
 
 #add-makesModels {
     margin-top: 5px;
 }
 
-#gifs {
-    margin: auto;
-}
+/* #gifs {
+} */
