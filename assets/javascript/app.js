@@ -1,7 +1,7 @@
+//array to provide the user with recommended GIFS...
+var makesModels = ["BMW", "Mercedes", "Ford", "Chevy", "Supra", "m3"];
+
 $(document).ready(function() {
-    //array to provide the user with recommended GIFS...
-    var makesModels = ["BMW", "Mercedes", "Ford", "Chevy", "Supra", "m3"];
-    
     //call buttons function to show list of gifs buttons...
     createButton();
 
@@ -15,6 +15,7 @@ $(document).ready(function() {
         
         //loop through the array of makes and models...
         for (var i = 0; i < makesModels.length; i++) {
+            console.log(makesModels[i]);  
             //create new button
             var button = $("<button>");
             //give each new div a class so that we can call all buttons later
@@ -27,6 +28,24 @@ $(document).ready(function() {
             $("#buttons").append(button);
         };    
     };    
+
+    //function handles events when button is clicked...
+    $("#add-makesModels").on("click", function(event){
+        event.preventDefault();
+        
+        //variable to grab the users text...
+        var request = $("#userInput").val();
+        // if (!request) {
+        //     return;
+        // }
+        //take users text and add it to the array of makesModels
+        console.log(request);
+        makesModels.push(request);
+        //call the buttons function to run through the array and creat a button.
+        createButton();
+        $("#userInput").val('');
+    });
+        
     
     function displayGif() {
         //variable for the api query
@@ -55,21 +74,7 @@ $(document).ready(function() {
 
             $("#gifHolder").prepend(showGif, pRating);
             }
-            console.log(pRating);
-        });
-    
-        //function handles events when button is clicked...
-        $("#add-makesModels").on("click", function(event){
-            event.preventDefault();
-            //variable to grab the users text...
-            var request = $("#userInput").val();
-            //take users text and add it to the array of makesModels
-            makesModels.push(request);
-            //call the buttons function to run through the array and creat a button.
-            createButton();
         });   
-
     };
-
 });
     
