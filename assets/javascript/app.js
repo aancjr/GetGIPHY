@@ -53,7 +53,7 @@ $(document).ready(function() {
             gifDiv.append(pRating);
             gifDiv.append(showGif);
 
-            $("#gifHolder").prepend(showGif);
+            $("#gifHolder").prepend(showGif, pRating);
             }
             console.log(pRating);
         });

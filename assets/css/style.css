@@ -5,19 +5,20 @@
     align-items: center;
 }
 
-/* #header {
-} */
-
-#buttons {
+h1 {
+    font-weight: bold;
     padding: 5px;
 }
 
-/* #form {
-}  */
-
-#add-makesModels {
-    margin-top: 5px;
+.form-inline {
+    margin-top: 10px;
 }
 
-/* #gifs {
-} */
+button {
+    padding: 2px 10px;
+    margin-right: 5px;
+}
+
+img {
+    margin: 5px;
+}
