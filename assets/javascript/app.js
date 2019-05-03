@@ -32,12 +32,8 @@ $(document).ready(function() {
     //function handles events when button is clicked...
     $("#add-makesModels").on("click", function(event){
         event.preventDefault();
-        
         //variable to grab the users text...
         var request = $("#userInput").val();
-        // if (!request) {
-        //     return;
-        // }
         //take users text and add it to the array of makesModels
         console.log(request);
         makesModels.push(request);
@@ -45,7 +41,7 @@ $(document).ready(function() {
         createButton();
         $("#userInput").val('');
     });
-        
+    
     
     function displayGif() {
         //variable for the api query
